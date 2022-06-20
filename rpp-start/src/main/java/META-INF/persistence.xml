@@ -1,0 +1,8 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+<persistence-unit name="rpp-start">
+<class>rppstart.jpa.Igrac</class>
+<class>rppstart.jpa.Liga</class>
+<class>rppstart.jpa.Nacionalnost</class>
+<class>rppstart.jpa.Tim</class>
+</persistence-unit>
+</persistence>
