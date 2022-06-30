@@ -14,5 +14,19 @@ export class NacionalnostService {
   public getAllNacionalnosts(): Observable<any> {
     return this.httpClient.get(`${NACIONALNOST_URL}`);
   }
+
+  public insertNacionalnost(nacionalnost: Nacionalnost): Observable<any> {
+    nacionalnost.id = 150;
+    return this.httpClient.post(`${NACIONALNOST_URL}`, nacionalnost);
+  }
+
+  public updateNacionalnost(nacionalnost: Nacionalnost): Observable<any> {
+    return this.httpClient.put(`${NACIONALNOST_URL}`, nacionalnost);
+  }
+
+  public deleteNacionalnost(id: number): Observable<any> {
+    return this.httpClient.delete(`${NACIONALNOST_URL}/${id}`);
+  }
+
 }
 

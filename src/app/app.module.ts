@@ -29,6 +29,8 @@ import { NacionalnostComponent } from './components/nacionalnost/nacionalnost.co
 import { LigaComponent } from './components/liga/liga.component';
 import { TimComponent } from './components/tim/tim.component';
 import { IgracComponent } from './components/igrac/igrac.component';
+import { NacionalnostDialogComponent } from './components/dialogs/nacionalnost-dialog/nacionalnost-dialog.component';
+import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,9 @@ import { IgracComponent } from './components/igrac/igrac.component';
     NacionalnostComponent,
     LigaComponent,
     TimComponent,
-    IgracComponent
+    IgracComponent,
+    NacionalnostDialogComponent,
+    LigaDialogComponent
   ],
   imports: [
     BrowserModule,
