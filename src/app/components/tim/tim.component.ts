@@ -1,11 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Tim } from 'src/app/models/tim';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Liga } from 'src/app/models/liga';
 import { TimService } from 'src/app/services/tim.service';
 import { TimDialogComponent } from '../dialogs/tim-dialog/tim-dialog.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-tim',
@@ -18,6 +20,9 @@ export class TimComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   dataSource!: MatTableDataSource<Tim>;
   selektovanTim!: Tim;
+
+  @ViewChild(MatSort, {static: false}) sort!: MatSort;
+  @ViewChild(MatPaginator, {static:false}) paginator!: MatPaginator;
 
 
   constructor(private timService: TimService,
@@ -39,6 +44,8 @@ export class TimComponent implements OnInit, OnDestroy {
     this.subscription = this.timService.getAllTims().subscribe(data =>
       {
         this.dataSource = new MatTableDataSource(data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }, (error:Error) => {
         console.log(error.name + ' ' + error.message);
       });
@@ -55,6 +62,13 @@ export class TimComponent implements OnInit, OnDestroy {
         this.loadData();
       }
     })
+  }
+
+  applyFilter(filterValue: any) {
+    filterValue = filterValue.target.value;
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLocaleLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
 

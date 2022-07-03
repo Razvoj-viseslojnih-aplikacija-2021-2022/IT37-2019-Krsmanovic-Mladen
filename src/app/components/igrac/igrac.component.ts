@@ -1,12 +1,14 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Igrac } from 'src/app/models/igrac';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { Tim } from 'src/app/models/tim';
 import { IgracService } from 'src/app/services/igrac.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Nacionalnost } from 'src/app/models/nacionalnost';
 import { IgracDialogComponent } from '../dialogs/igrac-dialog/igrac-dialog.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-igrac',
@@ -19,6 +21,8 @@ export class IgracComponent implements OnInit, OnDestroy, OnChanges {
   'nacionalnost', 'tim', 'actions'];
  dataSource!: MatTableDataSource<Igrac>;
  subcription!: Subscription;
+ @ViewChild(MatSort, {static: false}) sort!: MatSort;
+  @ViewChild(MatPaginator, {static:false}) paginator!: MatPaginator;
  @Input() selektovaniTim!: Tim;
 
  constructor(private igracService: IgracService,
@@ -42,6 +46,9 @@ export class IgracComponent implements OnInit, OnDestroy, OnChanges {
    this.subcription = this.igracService. getIgracZaTimID(this.selektovaniTim.id)
          .subscribe(data => {
            this.dataSource = new MatTableDataSource(data);
+           this.dataSource.sort = this.sort;
+           this.dataSource.paginator = this.paginator;
+
          }, (error: Error) => {
            console.log(error.name +' '+ error.message);
          });
@@ -63,5 +70,12 @@ export class IgracComponent implements OnInit, OnDestroy, OnChanges {
            }
          });
  }
+
+ applyFilter(filterValue: any) {
+  filterValue = filterValue.target.value;
+  filterValue = filterValue.trim();
+  filterValue = filterValue.toLocaleLowerCase();
+  this.dataSource.filter = filterValue;
+}
 
 }
