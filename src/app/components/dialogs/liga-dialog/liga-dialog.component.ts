@@ -29,12 +29,12 @@ export class LigaDialogComponent implements OnInit {
     this.subscription = this.ligaService.addLiga(this.data).subscribe(() => {
       this.snackBar.open('Uspešno dodata liga: ' + this.data.naziv, 'OK', {
         duration:2500
-      })
+      });
     },
     (error: Error) => {
       this.snackBar.open('Došlo je do greške prilikom dodavanja nove lige!', 'Zatvori', {
         duration:2500
-      })
+      });
     }
     );
   }
@@ -43,12 +43,12 @@ export class LigaDialogComponent implements OnInit {
     this.subscription = this.ligaService.updateLiga(this.data).subscribe(() => {
       this.snackBar.open('Uspešno izmenjena liga: ' + this.data.naziv, 'OK', {
         duration:2500
-      })
+      });
     },
     (error: Error) => {
       this.snackBar.open('Došlo je do greške prilikom izmene postojeće lige!', 'Zatvori', {
         duration:2500
-      })
+      });
     }
     );
   }
@@ -57,12 +57,12 @@ export class LigaDialogComponent implements OnInit {
     this.subscription = this.ligaService.deleteLiga(this.data.id).subscribe(() => {
       this.snackBar.open('Uspešno obrisana liga: ' + this.data.naziv, 'OK', {
         duration:2500
-      })
+      });
     },
     (error: Error) => {
       this.snackBar.open('Došlo je do greške prilikom brisanja postojeće lige!', 'Zatvori', {
         duration:2500
-      })
+      });
     }
     );
   }

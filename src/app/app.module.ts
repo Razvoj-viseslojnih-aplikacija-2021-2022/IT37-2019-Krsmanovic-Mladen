@@ -31,6 +31,11 @@ import { TimComponent } from './components/tim/tim.component';
 import { IgracComponent } from './components/igrac/igrac.component';
 import { NacionalnostDialogComponent } from './components/dialogs/nacionalnost-dialog/nacionalnost-dialog.component';
 import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialog.component';
+import { TimDialogComponent } from './components/dialogs/tim-dialog/tim-dialog.component';
+import { IgracDialogComponent } from './components/dialogs/igrac-dialog/igrac-dialog.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +47,9 @@ import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialo
     TimComponent,
     IgracComponent,
     NacionalnostDialogComponent,
-    LigaDialogComponent
+    LigaDialogComponent,
+    TimDialogComponent,
+    IgracDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +72,9 @@ import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialo
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
