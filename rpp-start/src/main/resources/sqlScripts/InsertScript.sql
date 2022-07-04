@@ -1,11 +1,11 @@
 
-insert into nacionalnost values (-100, 'test', 'test')
-insert into liga values (-100, 'test', 'test')
+insert into nacionalnost values (-100, 'test', 'test');
+insert into liga values (-100, 'test', 'test');
  INSERT INTO tim (id,naziv,osnovan,sediste,liga)
- VALUES (-100,'Crvena ',to_date('05.03.1989.','dd.mm.yyyy.'),'Beograd',-100)	
+ VALUES (-100,'Crvena ',to_date('05.03.1989.','dd.mm.yyyy.'),'Beograd',-100);	
  
   INSERT INTO igrac (id,ime,prezime,broj_reg,datum_rodjenja,nacionalnost,tim)
-  VALUES (-100,'Milan','Jovic','0609496',to_date('05.03.1989.','dd.mm.yyyy.'),-100,-100)
+  VALUES (-100,'Milan','Jovic','0609496',to_date('05.03.1989.','dd.mm.yyyy.'),-100,-100);
  
 -- NACIONALNOST podatke
 
